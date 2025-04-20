@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🎯 Daily Filler Task Picker</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f8f9fa;
+      margin: 0;
+      padding: 2rem;
+      text-align: center;
+    }
+    h1 {
+      color: #333;
+      font-size: 1.8rem;
+    }
+    button {
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      margin-top: 1.5rem;
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+    .task-box {
+      margin-top: 2rem;
+      font-size: 1.2rem;
+      color: #444;
+      background: #fff;
+      padding: 1rem;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+      min-height: 80px;
+    }
+  </style>
+</head>
+<body>
+  <h1>🎯 Your Next Filler Task</h1>
+  <div class="task-box" id="taskBox">Tap the button to get started!</div>
+  <button onclick="getTask()">Give Me a Task</button>
+
+  <script>
+    const tasks = [
+      { task: "Read 1 paragraph from a saved DevOps blog", goal: "#TechnicalGrowth" },
+      { task: "Watch a 3-min lo-fi DevOps explainer video", goal: "#TechnicalGrowth" },
+      { task: "Do 5 standing twists + 3 deep breaths", goal: "#PhysicalWellbeing" },
+      { task: "Look out your window for 2 minutes", goal: "#MentalWellbeing" },
+      { task: "Write 2-line story for Leo the Lion", goal: "#CreativeJoy" },
+      { task: "Give Yuvi a tight hug and playfully chat for 3 mins", goal: "#MeaningfulConnection" },
+      { task: "Clean your workspace for 2 minutes", goal: "#MentalDeclutter" },
+      { task: "Do a 1-min guided body scan", goal: "#Mindfulness" },
+      { task: "Stretch while listening to a DevOps podcast", goal: "#Growth+Movement" },
+      { task: "Call or send a voice note to someone you care about", goal: "#MeaningfulConnection" },
+      { task: "Write 3 micro-wins from the past 24 hours", goal: "#MentalWellbeing" },
+      { task: "Organize your downloads folder or Notion task list", goal: "#TechnicalClarity" }
+    ];
+
+    function getTask() {
+      const random = tasks[Math.floor(Math.random() * tasks.length)];
+      document.getElementById("taskBox").innerHTML = `💡 ${random.task}<br><strong>${random.goal}</strong>`;
+    }
+  </script>
+</body>
+</html>
