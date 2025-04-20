@@ -5,46 +5,68 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>🎯 Daily Filler Task Picker</title>
   <style>
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
     body {
       font-family: 'Segoe UI', sans-serif;
-      background: #f8f9fa;
+      background: linear-gradient(135deg, #fefcea, #f1da36);
       margin: 0;
       padding: 2rem;
       text-align: center;
+      animation: fadeInUp 1s ease-in;
     }
     h1 {
       color: #333;
-      font-size: 1.8rem;
+      font-size: 2rem;
+      animation: pulse 2s infinite ease-in-out;
     }
     button {
       padding: 0.75rem 1.5rem;
       font-size: 1rem;
       margin-top: 1.5rem;
-      background: #007bff;
+      background: #ff6f61;
       color: white;
       border: none;
-      border-radius: 8px;
+      border-radius: 12px;
       cursor: pointer;
+      transition: background 0.3s ease;
+      animation: fadeInUp 1s ease-in 0.3s both;
     }
     button:hover {
-      background: #0056b3;
+      background: #e5534b;
     }
     .task-box {
       margin-top: 2rem;
       font-size: 1.2rem;
-      color: #444;
-      background: #fff;
-      padding: 1rem;
-      border-radius: 12px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.05);
-      min-height: 80px;
+      color: #222;
+      background: #fff7d1;
+      padding: 1.5rem;
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      min-height: 100px;
+      animation: fadeInUp 1s ease-in 0.5s both;
     }
   </style>
 </head>
 <body>
-  <h1>🎯 Your Next Filler Task</h1>
-  <div class="task-box" id="taskBox">Tap the button to get started!</div>
-  <button onclick="getTask()">Give Me a Task</button>
+  <h1>✨ Your Uplifting Filler Task ✨</h1>
+  <div class="task-box" id="taskBox">Tap the button to get inspired!</div>
+  <button onclick="getTask()">🎲 Give Me a Task</button>
 
   <script>
     const tasks = [
@@ -64,7 +86,11 @@
 
     function getTask() {
       const random = tasks[Math.floor(Math.random() * tasks.length)];
-      document.getElementById("taskBox").innerHTML = `💡 ${random.task}<br><strong>${random.goal}</strong>`;
+      const taskBox = document.getElementById("taskBox");
+      taskBox.style.animation = 'none';
+      void taskBox.offsetWidth; // Trigger reflow
+      taskBox.style.animation = 'fadeInUp 0.5s ease-in';
+      taskBox.innerHTML = `💡 ${random.task}<br><strong>${random.goal}</strong>`;
     }
   </script>
 </body>
